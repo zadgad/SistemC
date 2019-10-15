@@ -8,6 +8,8 @@ class inicio extends Controller
 {
     public function index()
     {
-        return view('layouts/page_template/auth');
+        // return view('layouts/page_template/auth');
+        return view('dashboard');
+
     }
 }

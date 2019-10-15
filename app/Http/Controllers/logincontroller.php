@@ -15,10 +15,11 @@ use Symfony\Component\Console\Helper\Table;
 
 class logincontroller extends Controller
 {
-  public function viewlogin(){
+    public function viewlogin(){
     return view('auth/login');
   }
-public function login(Request $request){
+
+   public function login(Request $request){
 
 
     $logEmail=$request->input('email');
@@ -38,7 +39,7 @@ public function login(Request $request){
 
     $drol=DB::table('usr_rol')->join('usr','id_usr','usr_id')->where('usr.login','=',$logEmail)->pluck('rol_id');
 
-    if($foundclient){
+        if($foundclient){
 
         // $idus=$foundclient->$id;
         $datos=DB::table('usr')->join('persona', 'ci_per', 'ci')->join('usr_rol', 'id_usr', 'usr_id')->join('rol', 'id_rol', 'rol_id')->where('usr.id_usr', '=', $id)->select('usr.id_usr', 'rol.ro', 'persona.nombre', 'persona.apepa', 'apema')->get();
@@ -46,21 +47,22 @@ public function login(Request $request){
         $nomb=DB::table('persona')->join('usr', 'ci_per', 'ci')->where('usr.id_usr', '=', $id)->pluck('persona.nombre');
         $email=DB::table('usr')->join('usr_rol', 'id_usr', 'usr_id')->where('usr.id_usr', '=', $id)->pluck('usr.email');
 
-        $request->session()->put('rol',$rol);
-        $request->session()->put('nombre',$nomb);
-        $request->session()->put('email',$email);
+         $request->session()->put('rol',$rol);
+         $request->session()->put('nombre',$nomb);
+         $request->session()->put('email',$email);
+
 
          $sesion=DB::table('sesion')->insert( [ 'activo'=>true, 'pid'=>$nomb[0],'usr_id'=>$id[0]] );
 
         $maxr=DB::table('rol')->max('id_rol');
 
 
-        if($drol[0]<=$maxr){
+            if($drol[0]<=$maxr){
 
             return redirect()->route('home');
-        }
-    }else return redirect()->route('login')
-    ->with('info');
+            }
+        }else return redirect()->route('login')
+        ->with('info');
     // if($logs=1&&$pass=1){
     // } else
     //  switch ($rol) {
@@ -83,6 +85,7 @@ public function login(Request $request){
     //}
 
         }
+
 
 }
 

@@ -25,6 +25,8 @@
     <link href="{{asset('plantillas/css/sweetalert2.css')}}" rel="stylesheet"/>
 
     <header id="header">
+
+
         <div class="container-fluid">
 
           <div id="logo" class="pull-left">
