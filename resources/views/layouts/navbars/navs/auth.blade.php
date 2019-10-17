@@ -23,7 +23,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href=guardar>
-            <i class="material-icons">Pagina de Inicio</i>
+            <i class="material-icons">dashboard</i>
             <p class="d-lg-none d-md-block">
               {{ __('Stats') }}
             </p>

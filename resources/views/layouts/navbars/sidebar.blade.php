@@ -13,7 +13,7 @@
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href=guardar>
-          <i class="material-icons">Inicio</i>
+          <i class="material-icons">dashboard</i>
             <p>{{ __('Pagina de Inicio') }}</p>
         </a>
       </li>
