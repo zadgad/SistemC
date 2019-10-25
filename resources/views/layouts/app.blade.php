@@ -17,17 +17,18 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
     </head>
-    <body class="{{ $class ?? '' }}">
-        @auth()
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+    <body class="{{ $data ?? '' }}">
+        @if(session()->get('user_rol')??'')
+            <form id="logout-form" action=" {{ route('logout') }} " method="POST" style="display: none;">
                 @csrf
             </form>
             @include('layouts.page_templates.auth')
-        @endauth
-        @guest()
-            @include('layouts.page_templates.guest')
-        @endguest
-        
+
+        @else
+                @include('layouts.page_templates.guest')
+        @endif
+
         <div class="fixed-plugin">
           <div class="dropdown show-dropdown">
             <a href="#" data-toggle="dropdown">

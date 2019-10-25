@@ -6,7 +6,11 @@
   -->
   <div class="logo">
     <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+        @if(session()->get('rol')?? '')
+            {{session()->get('rol')->first()}}
+        @else
+
+        @endif
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -20,7 +24,7 @@
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-          <p>{{ __('Laravel Examples') }}
+          <p>{{ __('Informacion Personal') }}
             <b class="caret"></b>
           </p>
         </a>
@@ -29,13 +33,13 @@
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href={{-- "{{ route('profile.edit') }}" --}}>
                 <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
+                <span class="sidebar-normal">{{ __('Perfil de Usuario') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href={{-- "{{ route('user.index') }}" --}}>
+              <a class="nav-link" href="{{ route('list_us') }} ">
                 <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
+                <span class="sidebar-normal"> {{ __('Lista de Usuario') }} </span>
               </a>
             </li>
           </ul>
@@ -44,43 +48,49 @@
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('table') }}" --}}>
           <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
+            <p>{{ __('Empleados') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('typography') }}" --}}>
           <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+            <p>{{ __('Sensores') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('icons') }}" --}}>
           <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
+          <p>{{ __('Ciudades') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('map') }}" --}}>
           <i class="material-icons">location_ons</i>
-            <p>{{ __('Maps') }}</p>
+            <p>{{ __('Vehiculos') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('notifications') }}" --}}>
           <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
+          <p>{{ __('Vias') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('language') }}" --}}>
           <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
+          <p>{{ __('Tabla TDMA') }}</p>
         </a>
       </li>
       <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('upgrade') }}" --}}>
           <i class="material-icons">unarchive</i>
-          <p>{{ __('Upgrade to PRO') }}</p>
+          <p>{{ __('Tablas De Recoleccion') }}</p>
+        </a>
+      </li>
+      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
+        <a class="nav-link" href={{-- "{{ route('upgrade') }}" --}}>
+          <i class="material-icons">unarchive</i>
+          <p>{{ __('Tablas De TDMA') }}</p>
         </a>
       </li>
     </ul>

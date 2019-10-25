@@ -25,7 +25,7 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Añadir Usuario') }}</a>
+                    <a href="{{ route('añadir_us') }}" class="btn btn-sm btn-primary">{{ __('Añadir Usuario') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -36,6 +36,11 @@
                       </th>
                       <th>
                         {{ __('Nombre') }}
+                      </th>
+                      <th>
+                        {{ __('Apellido Pa.') }}
+                      </th><th>
+                        {{ __('Apellido Ma') }}
                       </th>
                       <th>
                         {{ __('Login') }}
@@ -54,21 +59,34 @@
                       @foreach($users as $user)
                         <tr>
                           <td>
-                            {{ $user->name }}
+                            {{ $user->id_usr }}
+                          </td>
+                          <td>
+                            {{ $user->nombre }}
+                          </td>
+                          <td>
+                            {{ $user->apepa }}
+                          </td>
+                          <td>
+                            {{ $user->apema }}
+                          </td>
+                          <td>
+                            {{ $user->login }}
                           </td>
                           <td>
                             {{ $user->email }}
                           </td>
                           <td>
-                            {{ $user->created_at->format('Y-m-d') }}
+                            {{ $user->ro }}
                           </td>
+
                           <td class="td-actions text-right">
-                            @if ($user->id != auth()->id())
-                              <form action="{{ route('user.destroy', $user) }}" method="post">
+                            @if ($user->id_usr ??'')
+                            <form action={{-- "{{ route('user.destroy', $user) }}"  --}}method="post">
                                   @csrf
                                   @method('delete')
 
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('user.edit', $user) }}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href={{-- "{{ route('user.edit', $user) }}" --}} data-original-title="" title="">
                                     <i class="material-icons">editar</i>
                                     <div class="ripple-container"></div>
                                   </a>
@@ -78,7 +96,7 @@
                                   </button>
                               </form>
                             @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('profile.edit') }}" data-original-title="" title="">
+                              <a rel="tooltip" class="btn btn-success btn-link" href={{-- "{{ route('profile.edit') }}" --}} data-original-title="" title="">
                                 <i class="material-icons">editar</i>
                                 <div class="ripple-container"></div>
                               </a>
@@ -95,4 +113,6 @@
       </div>
     </div>
   </div>
+
+
 @endsection

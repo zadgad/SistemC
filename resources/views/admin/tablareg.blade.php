@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'table', 'titlePage' => __('Tablas De TDMA')])
+@extends('layouts.app', ['activePage' => 'table', 'titlePage' => __('Tabla De Registro')])
 
 @section('content')
 <div class="content">
@@ -140,7 +140,6 @@
         </div>
       </div>
 
-      </div>
     </div>
   </div>
 </div>

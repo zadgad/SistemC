@@ -13,7 +13,7 @@
 <link href="{{asset('plantillas/css/sweetalert2.css')}}" rel="stylesheet"/>
 
 
-@extends('layouts.appl', ['activePage' => 'dashboard', 'titlePage' => __('Inicio')])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Inicio')])
 
 @section('content')
 <section id="Vias">

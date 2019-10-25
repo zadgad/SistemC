@@ -1,4 +1,4 @@
-@extends('layouts.appl', ['activePage' => 'user-management', 'titlePage' => __('Ciudades')])
+@extends('layouts.appl', ['activePage' => 'user-management', 'titlePage' => __('Lista De Ciudades')])
 
 @section('content')
   <div class="content">

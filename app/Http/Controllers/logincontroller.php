@@ -16,8 +16,9 @@ use Symfony\Component\Console\Helper\Table;
 class logincontroller extends Controller
 {
     public function viewlogin(){
-    return view('auth/login');
-  }
+        return view('auth/login');
+
+}
 
    public function login(Request $request){
 
@@ -50,6 +51,7 @@ class logincontroller extends Controller
          $request->session()->put('rol',$rol);
          $request->session()->put('nombre',$nomb);
          $request->session()->put('email',$email);
+         $request->session()->put('user_rol',$drol);
 
 
          $sesion=DB::table('sesion')->insert( [ 'activo'=>true, 'pid'=>$nomb[0],'usr_id'=>$id[0]] );
@@ -59,7 +61,8 @@ class logincontroller extends Controller
 
             if($drol[0]<=$maxr){
 
-            return redirect()->route('home');
+                return redirect()->route('home');
+
             }
         }else return redirect()->route('login')
         ->with('info');
@@ -85,8 +88,23 @@ class logincontroller extends Controller
     //}
 
         }
+        public function logout(){
+
+        if(session()->get('user_rol')->first()<=$maxr=DB::table('rol')->max('id_rol')){
+
+            $id=DB::table('usr')->where('usr.email','=',session()->get('email')->first())->pluck('id_usr');
+
+            $session=DB::table('sesion')->where('sesion.usr_id','=',$id[0])->where('activo','=',1)->update(['activo'=>0]);
+
+        }
+
+        session()->flush();
+        return redirect('/');
+
+        }
+
+ }
 
 
-}
 
 
