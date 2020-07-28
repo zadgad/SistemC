@@ -18,6 +18,7 @@ class Ciudad extends Model
         return $this -> belongsTo(via::class,'id_ciudad','id_via' );
         //un grupo puede tener multiples sesiones
     }
-
-
+    public function ciud($id){
+        return Ciudad::where('depa','=',$id)->get();
+    }
 }
