@@ -4,6 +4,8 @@
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-md-9 ml-auto mr-auto mb-3 text-center">
+    <br>
+
       <h3>{{ __('Bienvenido al SISTEMA DE CONTROL VEHICULAR, gracias por ser parte de nuetra plataforma, De inicio a su Session.') }} </h3>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
@@ -80,7 +82,7 @@
             @endif
         </div>
         <div class="col-6 text-right">
-            <a href=register class="text-light">
+            <a href="{{ route('registro') }}" class="text-light">
                 <small>{{ __('Crear Cuenta Nueva') }}</small>
             </a>
         </div>
@@ -89,3 +91,4 @@
   </div>
 </div>
 @endsection
+

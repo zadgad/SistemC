@@ -1,5 +1,4 @@
-@extends('layouts.appl', ['activePage' => 'dashboard', 'titlePage' => __('Inicio')])
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('User Profile')])
+@extends('layouts.appl', ['activePage' => 'dashboard', 'titlePage' => __('Editar Informacion de Usuario')])
 
 @section('content')
   <div class="content">

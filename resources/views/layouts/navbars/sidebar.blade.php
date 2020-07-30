@@ -16,7 +16,7 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-        <a class="nav-link" href=guardar>
+        <a class="nav-link" href={{route('home')}}>
           <i class="material-icons">dashboard</i>
             <p>{{ __('Pagina de Inicio') }}</p>
         </a>
@@ -31,7 +31,7 @@
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href={{-- "{{ route('profile.edit') }}" --}}>
+              <a class="nav-link" href= "{{ route('editw') }}" >
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal">{{ __('Perfil de Usuario') }} </span>
               </a>
@@ -46,35 +46,37 @@
         </div>
       </li>
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href={{-- "{{ route('table') }}" --}}>
+        <a class="nav-link" href="{{ route('list_em') }}" >
           <i class="material-icons">content_paste</i>
             <p>{{ __('Empleados') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href={{-- "{{ route('typography') }}" --}}>
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Sensores') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href={{-- "{{ route('icons') }}" --}}>
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Ciudades') }}</p>
-        </a>
-      </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href={{-- "{{ route('map') }}" --}}>
+        <a class="nav-link" href= "{{ route('list_vehic') }}">
           <i class="material-icons">location_ons</i>
             <p>{{ __('Vehiculos') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href={{-- "{{ route('notifications') }}" --}}>
+        <a class="nav-link" href="{{ route('list_vias') }}" >
           <i class="material-icons">notifications</i>
           <p>{{ __('Vias') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('list_senores') }}" >
+          <i class="material-icons">library_books</i>
+            <p>{{ __('Sensores') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+        <a class="nav-link" href= "{{ route('list_ciudad') }}" >
+          <i class="material-icons">bubble_chart</i>
+          <p>{{ __('Ciudades') }}</p>
+        </a>
+      </li>
+
+
       <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('language') }}" --}}>
           <i class="material-icons">language</i>
@@ -84,7 +86,7 @@
       <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link" href={{-- "{{ route('upgrade') }}" --}}>
           <i class="material-icons">unarchive</i>
-          <p>{{ __('Tablas De Recoleccion') }}</p>
+          <p>{{ __('Recoleccion de datos') }}</p>
         </a>
       </li>
       <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
@@ -96,3 +98,4 @@
     </ul>
   </div>
 </div>
+

@@ -42,6 +42,7 @@
               {{--  <li><a href="{{ route('login') }}" >Iniciar Sesion</a></li>   --}}
               @guest
               <li><a href={{route("login")}} >Iniciar sesion</a></li>
+
               {{--  <li><a href="{{ route('register') }}">Registrarse</a></li>  --}}
           @else
               <li class="dropdown">

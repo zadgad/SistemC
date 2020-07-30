@@ -10,10 +10,9 @@ use App\Usr_Rol;
 use DB;
 use \Carbon\Carbon;
 use Symfony\Component\Console\Helper\Table;
-
+use Illuminate\Support\Facades\Crypt;
 class registro extends Controller
 {
-
     public function viewlogin()
     {
        return view('auth.login');
@@ -34,7 +33,7 @@ class registro extends Controller
                 'last_ape'=>'required|string|max:255',
                 'ci'=>'required|digits_between:6,12',
                 'email' => 'required|string|email|max:255|unique:usr,email',
-                'password' => 'required|string:password_confirmation|min:6|confirmed'
+                'password' =>  'required|string:password_confirmation|min:6|confirmed'
             ]
         );
 
@@ -43,8 +42,10 @@ class registro extends Controller
             $last_ape=$request->input('last_ape');
             $ci = $request->input('ci');
             $email=$request->input('email');
-            $password=$request->input('password');
-            $passwordR=$request->input('password_confirmation');
+            $pas=$request->input('password');
+            $password=sha1($pas);
+            $pass=$request->input('password_confirmation');
+            $passwordR=sha1($pass);
 
             $prueba=DB::table('usr')->where('usr.ci_per','=',$ci)->count();
             $prueba1=DB::table('usr')->where('usr.email','=',$email)->count();
@@ -61,11 +62,11 @@ class registro extends Controller
                      //$usr = usr::where('usr.ci_per','=', $ci)->select('id_usr')->get();
                      $getuser = DB::table('usr')->where('usr.ci_per', '=', $ci)->select('id_usr', 'email', 'password')->get();
                      //return $insertpersona." user".$insertuser."get ".$getuser;
-                     $id=User::where('ci','=',$ci )>pluck('id_usr');
+                     $id=Usr::where('ci_per','=',$ci )->pluck('id_usr');
                      foreach ($getuser as $key => $value) {
-                         DB::table('usr_rol')->insert(['usr_id'=>$value->id_usr, 'rol_id'=>3]);
+                         DB::table('usr_rol')->insert(['usr_id'=>$value->id_usr, 'rol_id'=>4]);
                         //  DB::table('password_reset')->insert(['email'=>$value->email,'token'=>$value->password,'id_us'=>$value->id_usr]);
-                          DB::table('password_reset')->insert(['email'=>$email,'token'=>$password,'id_us'=>$id]);
+                          DB::table('password_resets')->insert(['email'=>$email,'token'=>$password,'id_us'=>$id[0]]);
 
                          break;
                      }
@@ -90,12 +91,11 @@ class registro extends Controller
 
 
     }
-
-
     public function login(Request $request){
-
         $uss=$request->get('email');
-        $pass=$request->get('password');
+        $passt=$request->get('password');
+        $pass=sha1($passt);
+        dd($pass);
         $valido=false;
        // $foundclient=Usuario::where(['email' => $uss,'password' => $pass])->get()->first();
         $foundclient=DB::table('usr')->where(['login' => $uss,'password' => $pass])->get()->first();
@@ -149,7 +149,3 @@ class registro extends Controller
         }
       }
 }
-
-
-
-

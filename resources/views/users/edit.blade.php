@@ -1,74 +1,66 @@
-@extends('layouts.app', ['activePage' => 'user-management', 'titlePage' => __('User Management')])
+@extends('layouts.appl', ['activePage' => 'user-management', 'titlePage' => __(' Formulario Para Editar ')])
 
 @section('content')
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off" class="form-horizontal">
-            @csrf
-            @method('put')
-
-            <div class="card ">
-              <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Edit User') }}</h4>
-                <p class="card-category"></p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="page-header">
+          <div class="row align-items-end">
+              <div class="col-lg-8">
+                  <div class="page-header-title">
+                      <i class="ik ik-calendar bg-blue"></i>
+                      <div class="d-inline">
+                        <h5>Editar Informacion De Usuario</h5>
+                        <span>Los cambios seran guardados en Sistema</span>
+                        <br>
+                        <br>
+                        <h6> </h6>
+                      </div>
+                  </div>
               </div>
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-md-12 text-right">
-                      <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
-                  </div>
-                </div>
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="{{ old('name', $user->name) }}" required="true" aria-required="true"/>
-                      @if ($errors->has('name'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', $user->email) }}" required />
-                      @if ($errors->has('email'))
-                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-password">{{ __(' Password') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" input type="password" name="password" id="input-password" placeholder="{{ __('Password') }}" />
-                      @if ($errors->has('password'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('password') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm Password') }}" />
-                    </div>
-                  </div>
-                </div>
+              <div class="col-lg-4">
+                  <nav class="breadcrumb-container" aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                          @if(session()->get('user_rol')->first()==1)
+                          <a href="{{route('inicio',$id=session()->get('nombre')->first())}}"><i class="ik ik-home"></i></a>
+                          @else
+                          @if(session()->get('user_rol')->first()!=1)
+                          <a href="../index.html"><i class="ik ik-home"></i></a>
+                          @endif
+                          @endif
+                      </li>
+                          <li class="breadcrumb-item">
+                              <a href="#">Apps</a>
+                          </li>
+                          <li class="breadcrumb-item active" aria-current="page">Editar Infor.</li>
+                      </ol>
+                  </nav>
               </div>
-              <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
-              </div>
-            </div>
-          </form>
-        </div>
+          </div>
       </div>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="profile-pic mb-20">
+                        @if(empty($users->foto))
+                        <p class="centered"><a {{$id=session()->get('nombre')->first()}} href="{{route('infoRut',$id)}}"><img src="{{Storage::url('image.gif')}}" class="img-circle" width="200"></a></p>
+                        @else
+        {{--                 {{$im=DB::table('usr')->where('usr','=',session()->get('nombre')->first())->pluck('usr.foto')}}
+                         {{--{{dd($ima[0])}}--}}
+                         <p class="centered"><a {{$id=session()->get('nombre')->first()}} href="{{route('infoRut',$id)}}"><img {{$ima=session()->get('image')}} src="{{Storage::url($users->foto)}}" class="img-circle" width="200"></a></p>
+                        @endif
+                                                <h4 class="mt-20 mb-0">{{$users->nombre}} {{$users->apepa}}</h4>
+                        <a href="#" >johndoe@admin.com</a>
+                    </div>
+                    
+                </div>
+             </div>
+        </div>
+    
 @endsection
+
+
+
+
+
