@@ -36,7 +36,7 @@
             <div class="card-header">
                 <h3>Lista de Departamentos</h3>
             </div>
-            <a href="{{route('añadir_vehi')}}" class="btn btn-sm btn-primary">{{ __('Añadir Vehiculo') }}</a>
+            <a  id="añad_via" style="display: none" href="{{route('añadir_vehi')}}" class="btn btn-sm btn-primary">{{ __('Añadir Vehiculo') }}</a>
             <div class="card-body">
                 <div class="dt-responsive">
                     <table id="lang-dt"
@@ -67,7 +67,7 @@
                               <th class="text-center">
                                 Activo
                               </th>
-                              <th class="text-right">
+                              <th  id="axions" style="display: none">
                                 {{ __('Accion') }}
                               </th>
                         </tr>
@@ -101,7 +101,7 @@
                                   <td class="text-center">
                                     {{ $dato->distaci_fin }}
                                   </td>
-                                  <td class="text-center">
+                                  <td  class="text-center">
                                     @if($dato->activo==0)
                                     <label class="badge badge-danger">Desactivado</label>
                                     @else
@@ -109,7 +109,7 @@
                                     @endif
                                   </td>
 
-                                  <td class="td-actions text-right">
+                                  <td class="td-actions text-right" id="axions" style="display: none">
                                     {{-- @if ($user->id != auth()->id())
 
                                     @else
@@ -157,7 +157,7 @@
                               <th class="text-center">
                                 Activo
                               </th>
-                              <th class="text-right">
+                              <th  class="text-right" id="axions" style="display: none">
                                 {{ __('Accion') }}
                               </th>
                         </tr>

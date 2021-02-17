@@ -72,7 +72,7 @@
                             <th class="text-center">
                               {{ __('Rol') }}
                             </th>
-                            <th class="text-right">
+                            <th id="axions_em" style="display: none" class="text-right">
                               {{ __('Actions') }}
                             </th>
                         </tr>
@@ -109,7 +109,7 @@
                             <td class="text-center">
                               {{ $user->ro }}
                             </td>
-                            <td class="td-actions text-right">
+                            <td id="axions_em" style="display: none" class="td-actions text-right">
                                   @if ($user->id_usr != session()->get('id')->first())
                                   <form action={{-- "{{ route('user.destroy', $user) }}" --}}  method="post">
                                         @csrf
@@ -151,7 +151,7 @@
                             <th class="text-center">
                               {{ __('Rol') }}
                             </th>
-                            <th class="text-right">
+                            <th id="axions_em" style="display: none" class="text-right">
                               {{ __('Actions') }}
                             </th>
                         </tr>

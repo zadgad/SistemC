@@ -9,6 +9,7 @@ use App\Usr;
 use App\Persona;
 use App\Usr_rol;
 use App\Vehiculo;
+use App\Sesion;
 class index extends Controller
 {
 
@@ -35,8 +36,9 @@ class index extends Controller
                 $countU=Usr_rol::where('usr_rol.rol_id','=',4)->count('rol_id');
                 $countG=Usr_rol::count('rol_id');
                 $count=$countG-1;
+                $session=DB::table('sesion')->join('usr','id_usr','usr_id')->where('usr.id_usr','!=',2)->select('sesion.activo','sesion.pid','sesion.hora_conect','sesion.hora_disconect','usr.foto')-> paginate(10);
                 $rol=DB::table('rol')->select('id_rol')->get();
-                return view('superU.inicio',compact('countA','countE','countU','count','rol'));
+                return view('superU.inicio',compact('countA','countE','countU','count','rol','session'));
 
 
             }else

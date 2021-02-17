@@ -50,11 +50,13 @@ class UbicacionController extends Controller
             $maxs=Rol::max('id_rol');
             if(session()->get('user_rol')->first()<=$maxs){
 
-                $sensor=Sensor::all();
+                $sensor=Sensor::select('id_sensor','nombre','estado','activo')->where('activo','=',false)->get();
                 $vias=via::all();
+                $aux="introducir avenida";
+                $aux1="0";
                 $depa=Departamento::all();
                 $ciudades=Ciudad::all();
-                return view('ubication.añadirUb',compact('sensor','vias','depa','ciudades'));
+                return view('ubication.añadirUb',compact('sensor','vias','depa','ciudades', 'aux', 'aux1'));
             }else
             return redirect()->route('login')
             ->with('info');
@@ -82,11 +84,13 @@ class UbicacionController extends Controller
                 'sen' =>'required|string|max:255',
                 'depa'=>'required|integer',
                 'ciudad'=>'required|string|max:255',
+                'tipo' => 'required|string|max:255',
                 'vias' => 'required|string|max:255',
+                'info'=>'required|string|max:255',
+                'info1'=>'required|integer',
                 'dime'=>'required|integer',
                 'carri' => 'required|integer',
                 'clasi'=>'required|string|max:255',
-                'tipo' => 'required|string|max:255',
                 'act' => 'required|string|max:255',
                 'Foto' => 'image'
             ] );
@@ -94,126 +98,43 @@ class UbicacionController extends Controller
             $depa=$request->input('depa');
             $ciu=$request->input('ciudad');
             $vias = $request->input('vias');
+            $info=$request->input('info');
             $atc=$request->input('act');
             $dime=$request->input('dime');
             $clasi=$request->input('clasi');
             $carri=$request->input('carri');
             $tipo=$request->input('tipo');
             $ina=request()->except('_token');
+
+
                 $senm=Sensor::where('sensor.nombre','=',$name)->count('id_sensor');
                 $via= via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->count('id_via');
-                $ciud= ciudad::where('nombc','=',$ciu)->where('depa','=',$depa)->count('id_ciudad');
                 //dd($request->file('Foto'));
                if(session()->get('id') ?? ''){
             $maxs=Rol::max('id_rol');
             $idusr=session()->get('id')->first();
            // dd($idusr);
+           $idc=Ciudad::join('departamento', 'id_dep','depa')->where('departamento.id_dep','=',$depa)->where('ciudad.nombc','=',$ciu)->pluck('id_ciudad')->first();
+
             if(session()->get('user_rol')->first()<=$maxs){
                 if (!empty($ina['Foto'])) {
                     $loca=$ina['Foto']->store('ubicacion','public');
-                        if($ciud==0){
-                            $aux=ciudad::insert(['nombc'=>$ciu,'depa'=>$depa]);
-                            $idc=ciudad::where('nombc','=',$ciu)->where('depa','=',$depa)->pluck('id_ciudad')->first();
                             if($via==0){
-                                $inser=Via::insert(['tipo'=>$tipo,'nuncarril'=>$carri,'dimension'=>$dime,'clacificacion'=>$clasi,'nomvia'=>$vias,'ciu'=>$idc]);
-
-                                $idvia=via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->pluck('id_via')->first();
-                                if($senm==0){
-                                    $insert=Sensor::insert(['estado'=>'Activo','nombre'=>$name,'activo'=>1]);
-                                    $idse=Sensor::where('nombre','=',$name)->pluck('id_sensor')->first();
-                                    $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$idse,'via_id'=>$idvia,'usr_id'=>$idusr[0]]);
-
-                                    return redirect()->route('listUbication')
-                                    ->with('info');
-                                }else{
-                                    $aux1=Sensor::where('nombre','=',$name)->select('id_sensor','nombre','estado','activo')->get();
-                                    foreach ($aux1 as $aut) {
-                                        dd('todo esta 5');
-                                        if ($aut->estado=='Desactivado'&& $aut->activo==false) {
-                                            dd('todo esta 6');
-                                            $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
-                                            return redirect()->route('listUbication')
-                                                        ->with('info');
-                                        } else {
-                                            return back()->with('Mensaje', 'El Sensor esta regitrado y en funcionamiento');
-                                        }
-                                    }
-                                }
-                            }else{
-                                $idvia= via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->pluck('id_via')->first();
-                                $selcVia=Via::where('id_via','=',$idvia)->select('via.id_via','via.tipo','via.nuncarril','via.dimension','via.clacificacion')->get();
-                              foreach($selcVia as $selc){
-                                dd('todo esta 8');
-                                if($selc->tipo==$tipo && $selc->nuncarril==$carri && $selc->dimension==$dime && $selec->clascificacion==$clasi){
-                                    dd('todo esta 9');
-                                    if($senm==0){dd('todo esta 10');
-                                        $insert=Sensor::insert(['estado'=>'Activo','nombre'=>$name,'activo'=>1]);
-                                        $idse=Sensor::where('nombre','=',$name)->pluck('id_sensor')->first();
-                                        $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$idse,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
-                                        return redirect()->route('listUbication')
-                                        ->with('info');
-                                    }else{
-                                        $viaI=Via::where('via.id_via','=',$idvia)->update(['tipo'=>$tipo,'nuncarril'=>$carri,'dimension'=>$dime,'clacificacion'=>$clasi]);
-                                        $aux1=Sensor::where('nombre','=',$name)->select('id_sensor','nombre','estado','activo')->get();
-                                        foreach ($aux1 as $aut) {dd('todo esta 12');
-                                            if ($aut->estado=='Desactivado'&& $aut->activo==false) {dd('todo esta 13');
-                                                $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
-                                                return redirect()->route('listUbication')
-                                                ->with('info');
-                                            } else {
-                                                return back()->with('Mensaje', 'El Sensor esta regitrado y en funcionamiento');
-                                            }
-                                        }
-                                    }
-
-                                }  else {
-                                    $updV=Via::where('id_via','=',$selc->id_via)->update(['tipo'=>$tipo,'nuncarril'=>$carri,'dimension'=>$dime,'clacificacion'=>$clasi]);
-                                    if($senm==0){dd('todo esta 15');
-                                        $insert=Sensor::insert(['estado'=>'Activo','nombre'=>$name,'activo'=>1]);
-                                        $idse=Sensor::where('nombre','=',$name)->pluck('id_sensor')->first();
-                                        $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$idse,'via_id'=>$idvia,'usr_id'=>$idusr[0]]);
-
-                                        return redirect()->route('listUbication')
-                                        ->with('info');
-                                    }else{
-                                        $aux1=Sensor::where('nombre','=',$name)->select('id_sensor','nombre','estado','activo')->get();
-                                        foreach ($aux1 as $aut) {dd('todo esta 17');
-                                            if ($aut->estado=='Desactivado'&& $aut->activo==false) {dd('todo esta 18');
-                                                $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
-                                                return redirect()->route('listUbication')
-                                                ->with('info');
-                                            } else {
-                                                return back()->with('Mensaje', 'El Sensor esta regitrado y en funcionamiento');
-                                            }
-                                        }
-                                    }
-
-                                }
-                                }
-                            }
-                        }else{
-                            $idc=ciudad::where('nombc','=',$ciu)->where('depa','=',$depa)->pluck('id_ciudad')->first();
-                            if($via==0){
-                                $inser=Via::insert(['tipo'=>$tipo,'nuncarril'=>$carri,'dimension'=>$dime,'clacificacion'=>$clasi,'nomvia'=>$vias,'ciu'=>$idc]);
-
-                                $idvia=via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->pluck('id_via')->first();
-                                if($senm==0){
+                                $inser=Via::insert(['tipo'=>$tipo,'nuncarril'=>$carri,'dimension'=>$dime,'clacificacion'=>$clasi,'nomvia'=>$vias,'ciu'=>$idc, 'dep_id_dep'=>$depa]);
+                                  $idvia=via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->pluck('id_via')->first();
+                                  if($senm==0){
                                     $insert=Sensor::insert(['estado'=>'Activo','nombre'=>$name,'activo'=>1]);
                                     $idse=Sensor::where('nombre','=',$name)->pluck('id_sensor')->first();
                                     $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$idse,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
+                                    $active=Sensor::where('id_sensor','=',$idse)->update(['estado'=>'Activo','sctivo'=>1]);
                                     return redirect()->route('listUbication')
                                     ->with('info');
                                 }else{
                                     $aux1=Sensor::where('nombre','=',$name)->select('id_sensor','nombre','estado','activo')->get();
                                     foreach ($aux1 as $aut) {
-                                            dd($aux1);
                                         if ($aut->estado=='Desactivado'&& $aut->activo==false) {dd('todo esta 24');
                                             $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
+                                            $active=Sensor::where('id_sensor','=',$aut->id_sensor)->update(['estado'=>'Activo','sctivo'=>1]);
                                             return redirect()->route('listUbication')
                                                         ->with('info');
                                         } else {
@@ -223,20 +144,24 @@ class UbicacionController extends Controller
                                 }
                             }else{
                                 $idvia= via::join('ciudad','id_ciudad','ciu')->where('via.nomvia','=',$vias)->where('ciudad.depa','=',$depa)->pluck('id_via')->first();
+
                                 if($senm==0){
                                     $insert=Sensor::insert(['estado'=>'Activo','nombre'=>$name,'activo'=>1]);
                                     $idse=Sensor::where('nombre','=',$name)->pluck('id_sensor')->first();
                                     $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$idse,'via_id'=>$idvia,'usr_id'=>$idusr]);
-
+                                    $active=Sensor::where('id_sensor','=',$idse)->update(['estado'=>'Activo','sctivo'=>1]);
                                     return redirect()->route('listUbication')
                                     ->with('info');
                                 }else{
 
                                     $aux1=Sensor::where('nombre','=',$name)->select('id_sensor','nombre','estado','activo')->get();
-                                    foreach ($aux1 as $aut) {
-                                        if ($aut->estado=='Desactivado'&& $aut->activo==false) {dd('todo esta 29');
-                                            $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
 
+                                    foreach ($aux1 as $aut) {
+
+                                        if ($aut->estado=='Desactivado'&& $aut->activo==false) {
+
+                                            $insU=ubicacion::insert(['activo'=>$atc,'foto'=>$loca,'id_disp'=>$aut->id_sensor,'via_id'=>$idvia,'usr_id'=>$idusr]);
+                                            $active=Sensor::where('id_sensor','=',$aut->id_sensor)->update(['estado'=>'Activo','sctivo'=>1]);
                                             return redirect()->route('listUbication')
                                                         ->with('info');
 
@@ -246,7 +171,7 @@ class UbicacionController extends Controller
                                     }
                                 }
                             }
-                        }
+
                     }
 
             }else
@@ -261,15 +186,17 @@ class UbicacionController extends Controller
         if(session()->get('id') ?? ''){
             $maxs=Rol::max('id_rol');
             if(session()->get('user_rol')->first()<=$maxs){
-                $sensor=Sensor::all();
+                $sensor=Sensor::where('estado','=','Desactivado')->select('id_sensor')->get();
                 $vias=via::all();
                 $depa=Departamento::all();
                 $ciudades=Ciudad::all();
                 $idUbic=$id;
-                $array=DB::table('ubicacion')->join('sensor','id_sensor','id_disp')->join('via','id_via','via_id')->join('ciudad','id_ciudad','ciu')->join('departamento','id_dep','depa')->where('ubicacion.id_ubicacion','=',$idUbic)
-                ->where('ubicacion.activo','=','Habilitado')->select('ubicacion.id_ubicacion','ubicacion.id_disp','ubicacion.via_id','ubicacion.activo','ubicacion.foto','sensor.nombre','sensor.estado','via.tipo','via.nuncarril','via.dimension','via.clacificacion','via.nomvia','ciudad.nombc','departamento.nomb')->first();
+                $aux="introducir avenida";
+                $aux1="0";
+                $datos=DB::table('ubicacion')->join('sensor','id_sensor','id_disp')->join('via','id_via','via_id')->join('ciudad','id_ciudad','ciu')->join('departamento','id_dep','depa')->where('ubicacion.id_ubicacion','=',$idUbic)
+                ->where('ubicacion.activo','=','Habilitado')->select('ubicacion.id_ubicacion','ubicacion.id_disp','ubicacion.via_id','ubicacion.activo','ubicacion.foto','sensor.nombre','sensor.estado','via.tipo','via.nuncarril','via.dimension','via.clacificacion','via.nomvia','ciudad.nombc','departamento.nomb')->get();
 
-                return view('ubication.editarU',compact('array','sensor','vias','depa','ciudades'));
+                return view('ubication.editarU',compact('datos','sensor','vias','depa','ciudades','idUbic','aux','aux1'));
             }else
             return redirect()->route('login')
             ->with('info');

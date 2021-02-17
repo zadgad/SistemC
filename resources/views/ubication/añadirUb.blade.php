@@ -66,7 +66,7 @@
                                   </div>
                                 </div>
                                 <div class="form-group row">
-                                  <label class="col-sm-3 col-form-label">{{ __('Departamento') }}</label>
+                                  <label class="col-sm-3 col-form-label" >{{ __('Departamento') }}</label>
                                   <div class="col-sm-9">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
   {{--                                     <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="depa" id="input-name" type="text" placeholder="{{ __('Departamento') }}" value="{{ old('depa') }}" required="true" aria-required="true" list="departa"/>
@@ -83,17 +83,17 @@
                                   <label class="col-sm-3 col-form-label">{{ __('Ciudad') }}</label>
                                   <div class="col-sm-9">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ciudad" id="input-name" type="text" placeholder="{{ __('Ciudad') }}" value="{{ old('ciudad') }}" required="true" aria-required="true" list="select-ciu"/>
-                                      <datalist name="ciudad" id="select-ciu" class="form-group " required="true" aria-required="true" data-depende="depal">
+                                     <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ciudad" id="ciuds" type="text" placeholder="{{ __('Ciudad') }}" value="{{ old('ciudad') }}" required="true" aria-required="true" list="select-ciu"/>
+                                      <datalist name="ciudad" id="select-ciu" class="form-group " required="true" aria-required="true" data-depende="depal" >
 
-                                          <option value="" >Seleccionar Ciudad </option>
+                                          <option  value="campo" >Seleccionar Ciudad </option>
 
                                     </datalist>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group row">
-                                  <label class="col-sm-3 col-form-label">{{ __('Via') }}</label>
+                                  <label class="col-sm-3 col-form-label">{{ __('Nom. Via') }}</label>
                                   <div class="col-sm-9">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                       <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="vias" id="input-name" type="text" placeholder="{{ __('Via Registrados') }}" value="{{ old('vias') }}" required="true" aria-required="true" list="list_via"/>
@@ -102,6 +102,47 @@
                                           <option value="{{$via->nomvia}}" > {{$via->nomvia}} </option>
                                           @endforeach
                                     </datalist>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">{{ __('Clasificacion') }}</label>
+                                  <div class="col-sm-9">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+  {{--                                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="clasi" id="input-name" type="text" placeholder="{{ __('Clasificacion') }}" value="{{ old('clasi') }}" required="true" aria-required="true" list="list_vial"/>
+  --}}                                          <select id="list_vial" class="form-control" name="clasi" onchange="mostrar()" >
+                                        <option value="">Seleccionar Clasificacion</option>
+                                        <option value="Autopista">Autopista</option>
+                                        <option value="Carretera">Carretera</option>
+                                        <option value="Calle">Calle</option>
+                                        <option value="Avenida">Avenida</option>
+                                    </select>
+                                      @if ($errors->has('name'))
+                                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                      @endif
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div id="entre" class="form-group row" style="display:none;">
+                                  <label class="col-sm-3 col-form-label">{{ __('Entre') }}</label>
+                                  <div class="col-sm-9">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="info" id="input-name" type="text" placeholder="{{ __('Entre') }}" value="{{ old('info', $aux) }}" required="true" aria-required="true"/>
+                                        @if ($errors->has('name'))
+                                          <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                  </div>
+                                </div>
+                                <div id="kilometro" class="form-group row" style="display:none;">
+                                  <label class="col-sm-3 col-form-label">{{ __('Kilometro') }}</label>
+                                  <div class="col-sm-9">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="info1" id="input-name" type="text" placeholder="{{ __('Kilometro') }}" value="{{ old('info1', $aux1) }}" required="true" aria-required="true"/>
+                                      @if ($errors->has('name'))
+                                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                      @endif
                                     </div>
                                   </div>
                                 </div>
@@ -128,23 +169,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="form-group row">
-                                  <label class="col-sm-3 col-form-label">{{ __('Clasificacion') }}</label>
-                                  <div class="col-sm-9">
-                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-  {{--                                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="clasi" id="input-name" type="text" placeholder="{{ __('Clasificacion') }}" value="{{ old('clasi') }}" required="true" aria-required="true" list="list_vial"/>
-  --}}                                          <select id="list_vial" class="form-control" name="clasi">
-                                        <option value="Autopista">Autopista</option>
-                                        <option value="Carretera">Carretera</option>
-                                        <option value="Calle">Calle</option>
-                                        <option value="Avenida">Avenida</option>
-                                    </select>
-                                      @if ($errors->has('name'))
-                                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
-                                      @endif
-                                    </div>
-                                  </div>
-                                </div>
+
                                 <div class="form-group row">
                                   <label class="col-sm-3 col-form-label">{{ __('Tipo de via') }}</label>
                                   <div class="col-sm-9">
@@ -193,28 +218,28 @@
         </div>
     </div>
   </div>
-            <script>
-                $(document).ready(function(){
-                 $('.dynamic').change(function(){
-                    if($(this).val()!=''){
-                        var select = $(this).attr("id");
-                        var value = $(this).val();
-                        var dependent = $(this).data('dependent');
-                        var _token = $('input[name="_token"]').val();
-                        $.ajax({
-                            url:"{{ route('') }}",
-                            success:function(result)
-                            {
-                                $('#'+dependent).html(result);
-                            }
-                        })
-                    }
-                 });
-                });
-            </script>
+ <script language="JavaScript" type="text/javascript">
+
+      function mostrar(){
+      var paquet=document.getElementById("list_vial").value;
+      if(paquet=="Autopista"||paquet=="Carretera"){
+        //alert(paquet);
+        $("#kilometro").show("slow");
+        $("#entre").hide();
+
+      }
+      if((paquet=="Calle"||paquet=="Avenida")){
+        //alert(paquet);
+        $("#kilometro").hide();
+        $("#entre").show("slow");
+
+      }
+    }
+ </script>
   @endsection
- {{-- @section('scripts')
- <script language="JavaScript" type="text/javascript" src="{{ asset('proyect')}}./js/select/ciud.js"></script>
- <script language="JavaScript" type="text/javascript" src="{{ asset('proyect')}}./js/select/avenidas.js"></script>
+   <script language="JavaScript" type="text/javascript" src="{{ asset('proyect/js/select/ciud.js')}}"></script>
+
+  {{-- @section('scripts')
+  <script language="JavaScript" type="text/javascript" src="{{ asset('proyect')}}./js/select/avenidas.js"></script>
 
  @endsection --}}

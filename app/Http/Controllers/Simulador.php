@@ -95,11 +95,10 @@ class Simulador extends Controller
                  }
 
         }else
-        return redirect()->route('login')
-        ->with('info');
+        return "holaaaa";//redirect()->route('login')->with('info');
 
-    }else return redirect()->route('login')
-    ->with('info');
+    }else return  "holaaaa2";//redirect()->route('login')->with('info');
+    return  "holaaaa3";
     }
     public function numcarril($carril){
         $numiter=$carril;
@@ -477,7 +476,7 @@ class Simulador extends Controller
                     }
                                }
                                return $this->tables();
-
+///
      }
 
     public function fechas($from, $to ,$step, $format ,$cantdia){

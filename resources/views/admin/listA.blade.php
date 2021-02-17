@@ -44,7 +44,6 @@
                     <div class="card-header">
                         <h3>Lista de Administradores</h3>
                     </div>
-                    <a href="{{ route('register',$rol[1]->id_rol) }}" class="btn btn-sm btn-primary">{{ __('Añadir Usuario') }}</a>
 
                     <div class="card-body">
                         <div class="dt-responsive">
@@ -76,7 +75,7 @@
                                     <th class="text-center">
                                       {{ __('Rol') }}
                                     </th>
-                                    <th class="text-right">
+                                    <th  class="text-right">
                                       {{ __('Actions') }}
                                     </th>
                                 </tr>
@@ -160,11 +159,14 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                            
                         </div>
+                      
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
   </div>
  @endsection

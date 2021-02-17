@@ -12,49 +12,49 @@
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('plantillas/img/syste.jpg') }}">
     <link rel="icon" type="image/png" href="{{ asset('plantillas/img/system.jpg') }}">
 
-        <link href="{{ asset('proyect') }}https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="{{ asset('proyect') }}https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jvectormap/jquery-jvectormap.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/weather-icons/css/weather-icons.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/c3/c3.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/datedropper/datedropper.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/summernote/dist/summernote-bs4.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/select2/dist/css/select2.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/summernote/dist/summernote-bs4.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/mohithg-switchery/dist/switchery.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/weather-icons/css/weather-icons.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/chartist/dist/chartist.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jvectormap/jquery-jvectormap.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/fullcalendar/dist/fullcalendar.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-1to10.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-horizontal.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-movie.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-pill.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-reversed.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-square.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/css-stars.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/fontawesome-stars-o.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap-slider/dist/css/bootstrap-slider.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/weather-icons/css/weather-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/c3/c3.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/datedropper/datedropper.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/mohithg-switchery/dist/switchery.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/weather-icons/css/weather-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/chartist/dist/chartist.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-1to10.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-horizontal.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-movie.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-pill.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-reversed.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/bars-square.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/css-stars.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-bar-rating/dist/themes/fontawesome-stars-o.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/bootstrap-slider/dist/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
 
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-minicolors/jquery.minicolors.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/owl.carousel/dist/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
-        <link rel="stylesheet" href="{{ asset('proyect') }}./dist/css/theme.min.css">
-        <script src="{{ asset('proyect') }}./src/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('proyect') }}./dist/css/theme.min.css">
+    <script src="{{ asset('proyect') }}./src/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
     <body>
@@ -198,6 +198,7 @@
         <script src="{{ asset('proyect') }}./js/form-components.js"></script>
         <script src="{{ asset('proyect') }}./plugins/owl.carousel/dist/owl.carousel.min.js"></script>
         <script src="{{ asset('proyect') }}./js/carousel.js"></script>
+        <script language="JavaScript" type="text/javascript" src="{{ asset('proyect')}}./js/select/ciud.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -208,6 +209,89 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+        <script>
+            //    console.log(user);
+                    $(document).ready(function(){
+                        const user_rol = {!! json_encode(session()->get('rol')->first()) !!};
+                        //(ocultarMostrar)();
+                        if(user_rol=="Supremo"){
+                            $("#listts").show("slow");
+                            $("#añadir_us").show("slow");
+                            $("#list_add").show("slow");
+                            $("#list_em").show("slow");
+                            $("#list_user").show("slow");
+                            $("#list_glo").show("slow");
+                            $("#depst").show("slow");
+                            $("#vias").show("slow");
+                            $("#vehiculos").show("slow");
+                            $("#sensor_id").show("slow");
+                            $("#list_sen").show("slow");
+                            $("#ubicacion").show("slow");
+                        }
+                        if(user_rol=="Administrador"){
+                            $("#listts").show("slow");
+                            $("#list_em").show("slow");
+                            $("#list_user").show("slow");
+                            $("#depst").show("slow");
+                            $("#vias").show("slow");
+                            $("#añad_via").show("slow");
+                            $("#vehiculos").show("slow");
+                            $("#vehñadir").show("slow");
+                            $("#sensor_id").show("slow");
+                            $("#sensor_añ").show("slow");
+                            $("#list_sen").show("slow");
+                            $("#ubicacion").show("slow");
+                            $("#ubicañadir").show("slow");
+                            $("#estadistic").show("slow");
+                            $("#formuss").show("slow");
+                            $("#aforos").show("slow");
+                            $("#regedit").show("slow");
+                            $("#esta").show("slow");
+                            $("#recolec").show("slow");
+                            $("#demosimulacion").show("slow");
+                        }
+                        if(user_rol=="Personal"){
+                            $("#depts").show("slow");
+                            $("#vias").show("slow");
+                            $("#añad_via").show("slow");
+                            $("#vehiculos").show("slow");
+                            $("#vehñadir").show("slow");
+                            $("#sensor_id").show("slow");
+                            $("#sensor_añ").show("slow");
+                            $("#list_sen").show("slow");
+                            $("#ubicacion").show("slow");
+                            $("#ubicañadir").show("slow");
+                            $("#estadistic").show("slow");
+                            $("#formuss").show("slow");
+                            $("#aforos").show("slow");
+                            $("#regedit").show("slow");
+                            $("#esta").show("slow");
+                            $("#recolec").show("slow");
+                        }
+                        if(user_rol=="Usuario"){
+                            $("#depst").show("slow");
+                            $("#vias").show("slow");
+                            $("#vehiculos").show("slow");
+                            $("#sensor_id").show("slow");
+                            $("#list_sen").show("slow");
+                            $("#ubicacion").show("slow");
+                            $("#estadistic").show("slow");
+                            $("#formuss").show("slow");
+                            $("#aforos").show("slow");
+                            $("#regedit").show("slow");
+                            $("#esta").show("slow");
+                            $("#recolec").show("slow");
+                            $("#formuss").show("slow");
+                            $("#aforos").show("slow");
+                            $("#regedit").show("slow");
+                            $("#esta").show("slow");
+                            $("#recolec").show("slow");
+                            $("#demosimulacion").show("slow");
+                        }
+                    });
+
+
+           </script>
         @yield('scripts')
     </body>
 </html>

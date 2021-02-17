@@ -42,7 +42,8 @@ class UsrController extends Controller
                     return view('users.create',compact('rol'));
                 }
                  else{
-                    $rol=DB::table('rol')->where('rol.id_rol', '>', 2)-> select('id_rol', 'ro')->get();
+                     $rol=$id;
+                    $rols=DB::table('rol')->where('rol.id_rol', '>', 2)-> select('id_rol', 'ro')->get();
                     return view('users.create',compact('rol'));
                 }
             }else

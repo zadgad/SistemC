@@ -98,7 +98,8 @@
                                               @csrf
                                               @method('delete')
 
-                                              <a href="{{route('añadirS')}}" class="btn btn-sm btn-primary">{{ __('Añadir Sensor') }}</a>                                                <a href=""><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                              <a href="{{route('editarSen',$in->id_sensor)}}" class="ik ik-edit f-16 mr-15 text-green"></a>            
+                                              <a href=""><i class="ik ik-trash-2 f-16 text-red"></i></a>
                                           </form>
 
                                         </form>

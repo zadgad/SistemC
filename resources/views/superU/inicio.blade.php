@@ -8,7 +8,7 @@
                    <div class="page-header-title">
                        <i class="ik ik-tablet bg-blue"></i>
                        <div class="d-inline">
-                           <h5>Pagina Inicio de Super Usuario</h5>
+                           <h5>Pagina Inicio de {{$id=session()->get('rol')->first()}}</h5>
                            <span>Informacion de las actividades de los usuarios registrados en sistema</span>
                            <br>
                            <br>
@@ -116,10 +116,10 @@
                </div>
            </div>
        </div>
-       <div class="col-xl-6 col-md-8">
+       <div class="col-xl-6 col-md-12">
            <div class="card new-cust-card">
                <div class="card-header">
-                   <h3>New Customers</h3>
+                   <h3>Actividades De Usuarios</h3>
                    <div class="card-header-right">
                        <ul class="list-unstyled card-option">
                            <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -129,38 +129,27 @@
                    </div>
                </div>
                <div class="card-block">
-                   <div class="align-middle mb-25">
-                       <img src="../img/users/1.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                       <div class="d-inline-block">
-                           <a href="#!"><h6>Alex Thompson</h6></a>
-                           <p class="text-muted mb-0">Cheers!</p>
-                           <span class="status active"></span>
-                       </div>
-                   </div>
-                   <div class="align-middle mb-25">
-                       <img src="../img/users/2.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                       <div class="d-inline-block">
-                           <a href="#!"><h6>John Doue</h6></a>
-                           <p class="text-muted mb-0">stay hungry stay foolish!</p>
-                           <span class="status active"></span>
-                       </div>
-                   </div>
-                   <div class="align-middle mb-25">
-                       <img src="../img/users/3.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                       <div class="d-inline-block">
-                           <a href="#!"><h6>Alex Thompson</h6></a>
-                           <p class="text-muted mb-0">Cheers!</p>
-                           <span class="status deactive text-mute"><i class="far fa-clock mr-10"></i>30 min ago</span>
-                       </div>
-                   </div>
-                   <div class="align-middle mb-25">
-                       <img src="../img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                       <div class="d-inline-block">
-                           <a href="#!"><h6>John Doue</h6></a>
-                           <p class="text-muted mb-0">Cheers!</p>
-                           <span class="status deactive text-mute"><i class="far fa-clock mr-10"></i>10 min ago</span>
-                       </div>
-                   </div>
+                @foreach ($session as $sesion)
+                    <div class="align-middle mb-25">
+                        @if(!empty($sesion->foto))
+                                     <img src="{{Storage::url($sesion->foto)}}" alt="user image" class="rounded-circle img-40 align-top mr-15">
+
+                                     @else
+                                     <img src="{{Storage::url('image.gif')}}" alt="user image" class="rounded-circle img-40 align-top mr-15">
+
+                                     @endif
+                        <div class="d-inline-block">
+                            <a href="#!"><h6>{{$sesion->pid}}</h6></a>
+                            <a href="">H. Conet  </a><a class="text-muted mb-0">{{$sesion->hora_conect}}</a>
+                            <a href=""> - H. Des  </a><a class="text-muted mb-0">{{$sesion->hora_disconect}}</a>
+                         @if($sesion->activo==true)
+                         <span class="status active"></span>
+                         @endif
+                        </div>
+                    </div>
+
+                @endforeach
+
                </div>
            </div>
        </div>

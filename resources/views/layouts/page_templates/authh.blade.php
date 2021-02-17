@@ -12,3 +12,4 @@
 
     </div>
   </div>
+  <script language="JavaScript" type="text/javascript" src="{{ asset('proyect')}}/js/select/permisos"></script>
